@@ -1,0 +1,32 @@
+.menu {
+  display: flex;
+  flex-direction: row;
+  color: #00f;
+  font-size: 15px;
+}
+
+.menuItem {
+  border-bottom: 2px #00f solid;
+  border-radius: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.right {
+  display: flex;
+  flex-direction: row;
+  color: #00f;
+  font-size: 15px;
+  margin-left: auto;
+}
+
+.right1 {
+  display: flex;
+  margin-left: auto;
+}
+
+.right2 {
+  margin-right: 10px;
+  border-bottom: 2px #00f solid;
+  border-radius: 10px;
+}
