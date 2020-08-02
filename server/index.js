@@ -15,10 +15,10 @@ app.use(express.json());
 
 app.post("/logon", async (req, res) => {
   try {
-    const { names, surname, id_number, pasword } = req.body;
+    const { fullName, email, passwordf, passwordr } = req.body;
     const newUser = await pool.query(
-      "INSERT INTO users (names, surname, id_number, pasword) VALUES($1, $2, $3, $4) RETURNING *",
-      [names, surname, id_number, pasword]
+      "INSERT INTO users (fullName, email, passwordf, passwordr) VALUES($1, $2, $3, $4) RETURNING *",
+      [fullName.fullName, email.email, passwordf.passwordf, passwordr.passwordr]
     );
     res.json(newUser.rows[0]);
   } catch (err) {
@@ -56,10 +56,10 @@ app.get("/logon/:id", async (req, res) => {
 app.put("/logon/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { names, surname, id_number, pasword } = req.body;
+    const { fullName, email, passwordf, passwordr } = req.body;
     const udateUser = await pool.query(
-      "UPDATE users SET names = $1, surname = $2, id_number = $3, pasword = $4 WHERE u_id = $5",
-      [names, surname, id_number, pasword, id]
+      "UPDATE users SET fullName = $1, email = $2, passwordf = $3, passwordr = $4 WHERE u_id = $5",
+      [fullName, email, passwordf, passwordr, id]
     );
     res.json("User was updated")
   } catch (err) {
@@ -85,5 +85,5 @@ app.delete("/logon/:id", async (req, res) => {
 //lISTEN TO PORT
 
 app.listen(5000, () => {
-  console.log('Server has started on port 5000');
+  console.log('Server is running on port 5000');
 });
