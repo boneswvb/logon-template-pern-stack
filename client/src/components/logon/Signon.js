@@ -1,7 +1,7 @@
 import React from 'react';
 import './signon.css';
 
-function Signon({ login, passwordl, handleChangeLogin, handleChangePl, getUserInfo }) {
+function Signon({ login, passwordl, handleChangeLogin, handleChangePl }) {
   return (
     <div className="wrapper fadeInDown">
       <div id="formContent">
@@ -31,7 +31,7 @@ function Signon({ login, passwordl, handleChangeLogin, handleChangePl, getUserIn
             type="submit" 
             className="fadeIn fourth" 
             value="Log In" 
-            onClick={() => getUserInfo()}
+            // onClick={() => ?????}
           />
         </form>
       </div>
