@@ -75,10 +75,9 @@ function Register({
               <button
                 type="submit"
                 className="btn btn-primary btn-block"
-                onClick={onSubmitForm}
-              >
+                onClick={onSubmitForm}              >
                 Create Account
-                </button>
+              </button>
             </div>
           </form>
         </article>

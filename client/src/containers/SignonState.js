@@ -19,7 +19,12 @@ function SignonState() {
     const { name, value } = event.target
     setPasswordl({ [name]: value });
   };
-  
+
+  // To be replace with a modal in stead of alert
+  const wrongPassword = (e) => {
+    alert("Username and password combination is not correct")
+  }
+
   useEffect(() => {
     //Signon checked against database
     //Get user info and store in userInfo to be used for delete profile
@@ -27,13 +32,13 @@ function SignonState() {
       try {
         const response = await fetch("http://localhost:5000/logon")
         const jsonData = await response.json()
-  
+
         const dBData = jsonData.map(data => {
           if (login.login === data.email && passwordl.passwordl === data.passwordf) {
             setUser(data);
             setIsSignedOn(true);
-          }
-          return(data)
+          } 
+          return (data)
         })
       } catch (err) {
         console.error(err.message)
@@ -42,21 +47,27 @@ function SignonState() {
     getUserInfo()
   }, [login.login, passwordl.passwordl]);
 
-  console.log("user", user);
-  console.log("isSignedOn", isSignedOn);
+  //Function to log the user off - to change if mogon and register links are moved over
+  const logOff = () => {
+    return(
+      setIsSignedOn(false)
+    )
+  }
+  
+
   return (
     <div>
       {
         isSignedOn
           ?
-          <UserProfile />
+          <UserProfile user={user} logOff={ logOff } />
           :
           <Signon
             login={login}
             passwordl={passwordl}
             handleChangeLogin={handleChangeLogin}
             handleChangePl={handleChangePl}
-            // getUserInfo={getUserInfo}
+            wrongPassword={ wrongPassword }
           />
       }
     </div>

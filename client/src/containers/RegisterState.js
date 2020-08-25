@@ -27,9 +27,7 @@ function RegisterState() {
   const handleChangePr = (event) => {
     const { name, value } = event.target
     setPasswordr({ [name]: value });
-  };    
-
-  console.log("Full Name", fullName);
+  };
 
   const onSubmitForm = (e) => {
     e.preventDefault();
